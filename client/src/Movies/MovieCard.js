@@ -2,6 +2,8 @@ import React from 'react';
 
 const MovieCard = props => {
   const { title, director, metascore, stars } = props.movie;
+  console.log("These are props in the MovieCard:", props)
+  // id is in the prop object!!
   return (
     <div className="movie-card">
       <h2>{title}</h2>

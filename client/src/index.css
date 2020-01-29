@@ -66,6 +66,20 @@ body {
   color: white;
 }
 
+.to-update {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: palegoldenrod;
+}
+
+.to-update:hover {
+  background: yellow;
+  color: black;
+}
+
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
@@ -75,3 +89,34 @@ body {
   color: red;
   text-align: center;
 }
+
+.update-container {
+  width: 100%;
+}
+
+.update-form {
+  margin-right: 5%;
+  margin-left: 5%;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.label {
+  width: 15%;
+  background-color: palegoldenrod;
+}
+
+.put-btn {
+  width: 25%;
+  margin-right: 37.5%;
+  margin-left: 37.5%;
+  margin-top: 5%;
+  line-height: 2rem;
+  background-color: deepskyblue;
+  color: black;
+  font-size: 1.5rem;
+}
+
+
