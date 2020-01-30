@@ -1,27 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const initialState = {
+    id: '',
+    title: '',
+    director: '',
+    metascore: '',
+    stars: []
+}
 
 function UpdateForm(props) {
-    const [movieToEdit, setEdit] = useState({
-        title: '',
-        director: '',
-        metascore: '',
-        stars: []
-    })
+    const [movieToEdit, setEdit] = useState(initialState)
 
 
 
     useEffect(() => {
-        console.log("these are props:", props)
-        let selected = props.savedList.find(movie => `${movie.id}` === props.match.params.id)
-        setEdit({
-            title: selected.title,
-            director: selected.director,
-            metascore: selected.metascore,
-            stars: selected.stars
-        })
-    },[props.savedList, props.match.params.id])
+        // console.log("these are props:", props)
+        axios.get(`http://localhost:5000/api/movies/${props.match.params.id}`)
+            .then((response) => {
+                console.log("This is is response in update:", response)
+                setEdit(response.data)
+            })
+            .catch((error) => {
+                console.log("This is an axios error in update:", error)
+            })
+        // let selected = props.savedList.find(movie => `${movie.id}` === props.match.params.id)
+        // setEdit({
+        //     title: selected.title,
+        //     director: selected.director,
+        //     metascore: selected.metascore,
+        //     stars: selected.stars
+        // })
+    },[props.match.params.id])
 
     const handleChange = (event) => {
         setEdit({
@@ -34,13 +44,8 @@ function UpdateForm(props) {
         axios.put(`http://localhost:5000/api/movies/${props.match.params.id}`, movieToEdit)
             .then((response) => {
                 console.log("This is response from save change:", response)
-                setEdit({
-                    title: '',
-                    director: '',
-                    metascore: '',
-                    stars: []
-                })
-                props.history.push('/api/movies')
+                // Set the of movie list
+                props.history.push('/')
             })
             .catch((error) => {
                 console.log("This is an error from save change:", error)

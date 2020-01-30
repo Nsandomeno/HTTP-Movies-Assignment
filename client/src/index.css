@@ -67,9 +67,6 @@ body {
 }
 
 .to-update {
-  position: absolute;
-  bottom: 25px;
-  right: 25px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: palegoldenrod;
@@ -78,6 +75,12 @@ body {
 .to-update:hover {
   background: yellow;
   color: black;
+}
+
+.delete {
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: indianred;
 }
 
 .home-button {
